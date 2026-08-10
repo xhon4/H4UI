@@ -1,0 +1,6 @@
+# H4UI · ~/.config/Kvantum/kvantum.kvconfig
+# QUÉ ES: elige QUÉ tema Kvantum está activo (no es el tema en sí).
+# El tema en sí (colores) vive en theme/kvantum/H4UI/H4UI.kvconfig,
+# lo instala Fase 8 (scripts/40-themes.sh) en ~/.config/Kvantum/H4UI/.
+[General]
+theme=H4UI

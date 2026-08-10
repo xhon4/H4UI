@@ -1,0 +1,23 @@
+# ┌─ H4UI ──────────────────────────────────────────────
+# │ QUÉ ES:        la "ficha de identidad" del tema H4UI — así es como
+# │                 GTK/nautilus/herramientas de temas lo reconocen y lo
+# │                 listan por su nombre ("H4UI").
+# │ PODÉS CAMBIAR: Comment (el texto descriptivo).
+# │ NO TOQUES:     Name=H4UI, GtkTheme=H4UI — son el nombre exacto que
+# │                 gtk-theme-name busca en settings.ini. Si no coincide,
+# │                 GTK no encuentra el tema y vuelve al gris de fábrica.
+# │ VA EN:         theme/gtk/H4UI/index.theme (se instala junto con el
+# │                 resto de theme/gtk/H4UI/).
+# └──────────────────────────────────────────────────────
+[Desktop Entry]
+Type=X-GNOME-Metatheme
+Name=H4UI
+Comment=Frutiger Aero glass — GTK3/GTK4, generado desde theme/colors/palette.toml
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=H4UI
+MetacityTheme=H4UI
+IconTheme=Papirus-Dark
+CursorTheme=Bibata-Modern-Ice
+ButtonLayout=menu:minimize,maximize,close

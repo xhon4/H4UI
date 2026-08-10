@@ -1,0 +1,11 @@
+[SddmGreeterTheme]
+QtVersion=6
+Name=H4UI
+Description=H4UI rice -- Frutiger Aero SDDM theme
+Type=sddm-theme
+Version=1.0
+MainScript=Main.qml
+ConfigFile=theme.conf
+TranslationsDirectory=translations
+Theme-Id=h4ui-sddm
+Theme-API=2.11

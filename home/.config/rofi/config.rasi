@@ -1,0 +1,30 @@
+/* ┌─ H4UI ──────────────────────────────────────────────
+   │ QUÉ ES:        el COMPORTAMIENTO del launcher rofi (qué modos usa,
+   │                 qué muestra). La PINTA (colores/vidrio) está en
+   │                 h4ui.rasi, el archivo de al lado.
+   │ PODÉS CAMBIAR: los modi, show-icons, drun-display-format — lo que
+   │                 está marcado con 👉 acá abajo.
+   │ NO TOQUES:     el nombre del theme cargado al final (@theme "h4ui"),
+   │                 tiene que matchear el archivo h4ui.rasi.
+   │ VA EN:         ~/.config/rofi/config.rasi (se abre con Super + A,
+   │                 definido en hyprland.lua).
+   └────────────────────────────────────────────────────── */
+
+configuration {
+    /* modi: qué modos usa rofi. "drun" = lanzar apps por su nombre bonito;
+       "run" = ejecutar comandos crudos. 👉 podés agregar "window", "emoji", etc. */
+    modi: "drun,run";
+
+    show-icons:          true;          // mostrar los iconitos de cada app
+    drun-display-format: "{name}";      // 👉 mostrar solo el nombre (sin el comando)
+
+    /* Ícono de lupa antes del cursor (usa un glyph de Nerd Font). */
+    display-drun: "  ";
+
+    /* 👉 Cuando elijas un set de iconos (Fase 3), descomentá y poné el nombre.
+       Sin esto, algunos iconos pueden salir en blanco. Ej: "Papirus", "Tela". */
+    // icon-theme: "Papirus";
+}
+
+/* Carga el tema H4UI (busca h4ui.rasi en esta misma carpeta). */
+@theme "h4ui"

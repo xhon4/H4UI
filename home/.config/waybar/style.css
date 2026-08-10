@@ -1,0 +1,389 @@
+/* ┌─ H4UI ──────────────────────────────────────────────
+   │ QUÉ ES:        el look Frutiger Aero de la barra de arriba (waybar):
+   │                 reloj, workspaces, spotify, tray, batería, etc.
+   │ PODÉS CAMBIAR: colores, gradientes, tamaños de padding/margin, radios
+   │                 de borde — todo lo puramente visual de acá abajo.
+   │ NO TOQUES:     los selectores (#nombre, .clase) tal cual están —
+   │                 tienen que matchear los module-id que define
+   │                 home/.config/waybar/config.jsonc, si no dejan de pintarse.
+   │ VA EN:         ~/.config/waybar/style.css
+   └────────────────────────────────────────────────────── */
+
+/*
+ * r4chi-dotfiles · Frutiger Aero Waybar
+ * First-pass visual base
+ *
+ * Designed for Waybar + Hyprland.
+ * GTK CSS gradients only — no browser-only CSS syntax.
+ */
+
+/* ─────────────────────────────────────────────────────────────
+   PALETTE — 👉 estos son los colores base. Cambiá los hex y se
+   actualiza toda la barra (usan @aero_blue, etc. más abajo).
+   ───────────────────────────────────────────────────────────── */
+
+@define-color aero_blue       #168CFF;
+@define-color aero_deep       #0757C8;
+@define-color aero_cyan       #00DDF2;
+@define-color aero_light      #DDFBFF;
+@define-color aero_white      #FFFFFF;
+
+@define-color glass_blue      rgba(20, 145, 235, 0.72);
+@define-color glass_dark      rgba(5, 72, 170, 0.72);
+@define-color glass_soft      rgba(35, 190, 245, 0.28);
+
+@define-color text_main       #FFFFFF;
+@define-color text_soft       #DDF8FF;
+
+/* ─────────────────────────────────────────────────────────────
+   GLOBAL
+   ───────────────────────────────────────────────────────────── */
+
+* {
+    font-family: "JetBrainsMono Nerd Font", "Iosevka Nerd Font", sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    min-height: 0;
+    border: none;
+}
+
+window#waybar {
+    background: transparent;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   MAIN GLASS BAR
+   ───────────────────────────────────────────────────────────── */
+
+window#waybar > box {
+    margin: 8px 10px 0 10px;          /* 👉 separación de la barra contra los bordes de la pantalla */
+
+    padding: 4px 7px;
+
+    border: 1px solid rgba(220, 253, 255, 0.90);
+    border-radius: 20px;              /* 👉 qué tan redondeada es la barra completa */
+
+    background: linear-gradient(
+    to bottom,
+    rgba(174, 229, 85, 0.82) 0%,
+    rgba(156, 223, 75, 0.55) 7%,
+    rgba(90, 161, 43, 0.78) 25%,
+    rgba(74, 144, 35, 0.82) 68%,
+    rgba(44, 110, 15, 0.82) 100%
+);
+
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.95),
+        inset 0 -2px 0 rgba(90, 161, 43, 0.78),
+        0 3px 10px rgba(0, 60, 150, 0.38);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   LEFT / CENTER / RIGHT GROUPS
+   ───────────────────────────────────────────────────────────── */
+
+.modules-left,
+.modules-center,
+.modules-right {
+    margin: 0;
+}
+
+.modules-left {
+    padding-left: 2px;
+}
+
+.modules-right {
+    padding-right: 2px;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   LAUNCHER
+   ───────────────────────────────────────────────────────────── */
+
+#custom-launcher {
+    margin: 0 4px 0 0;
+    padding: 5px 12px;
+    color: rgb(155, 217, 226);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.82);
+
+    background: linear-gradient(
+        to bottom,
+        rgba(240, 255, 255, 0.78) 0%,
+        rgba(95, 205, 255, 0.48) 18%,
+        rgba(20, 130, 225, 0.70) 58%,
+        rgba(0, 205, 230, 0.72) 100%
+    );
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.95),
+        inset 0 -1px 0 rgba(0, 245, 255, 0.65),
+        0 2px 5px rgba(0, 65, 150, 0.30);
+}
+
+#custom-launcher:hover {
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.90) 0%,
+        rgba(125, 225, 255, 0.58) 18%,
+        rgba(35, 150, 240, 0.78) 58%,
+        rgba(0, 220, 238, 0.82) 100%
+    );
+}
+
+/* ─────────────────────────────────────────────────────────────
+   HYPRLAND WORKSPACES
+   ───────────────────────────────────────────────────────────── */
+
+#workspaces {
+    margin: 0;
+    padding: 0 2px;
+}
+
+#workspaces button {
+    margin: 1px 2px;
+    padding: 4px 9px;
+
+    color: rgba(225, 249, 255, 0.92);
+
+    border: 1px solid transparent;
+    border-radius: 13px;
+
+    background: transparent;
+
+    box-shadow: none;
+
+    transition: none;
+}
+
+#workspaces button:hover {
+    color: #FFFFFF;
+
+    border-color: rgba(255, 255, 255, 0.55);
+
+    background: linear-gradient(
+        to bottom,
+        rgba(240, 255, 255, 0.52) 0%,
+        rgba(85, 200, 255, 0.30) 24%,
+        rgba(0, 125, 220, 0.42) 100%
+    );
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.75);
+}
+
+#workspaces button.active {
+    color: #FFFFFF;
+
+    border-color: rgba(225, 252, 255, 0.95);
+
+    /*
+     * Deliberately darker than the surrounding bar so white
+     * workspace text remains readable.
+     */
+    background: linear-gradient(
+        to bottom,
+            rgba(117, 222, 82, 0.82) 0%,
+            rgba(150, 214, 72, 0.55) 7%,
+            rgba(43, 161, 43, 0.78) 25%,
+            rgba(43, 139, 34, 0.82) 68%,
+            rgba(24, 110, 15, 0.82) 100%
+    );
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.92),
+        inset 0 -1px 0 rgba(0, 247, 255, 0.70),
+        0 2px 5px rgba(0, 55, 145, 0.32);
+}
+
+#workspaces button.empty {
+    color: rgba(215, 245, 255, 0.58);
+}
+
+#workspaces button.urgent {
+    color: #FFFFFF;
+
+    border-color: rgba(255, 255, 255, 0.92);
+
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 235, 245, 0.78) 0%,
+        rgba(245, 100, 160, 0.75) 45%,
+        rgba(190, 35, 110, 0.86) 100%
+    );
+}
+
+/* ─────────────────────────────────────────────────────────────
+   ACTIVE WINDOW
+   ───────────────────────────────────────────────────────────── */
+
+#window {
+    margin: 0 8px;
+    padding: 5px 15px;
+
+    border-radius: 15px;
+    border: 1px solid rgba(210, 250, 255, 0.55);
+
+    color: @text_main;
+
+    background: linear-gradient(
+        to bottom,
+        rgba(117, 222, 82, 0.82) 0%,
+            rgba(150, 214, 72, 0.55) 7%,
+            rgba(43, 161, 43, 0.78) 25%,
+            rgba(43, 139, 34, 0.82) 68%,
+            rgba(24, 110, 15, 0.82) 100%
+    );
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.65);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   RIGHT-SIDE CAPSULES
+   ───────────────────────────────────────────────────────────── */
+
+/* 👉 las "cápsulas" de la derecha (spotify, cpu, memoria, audio, bandeja,
+   reloj) comparten este mismo estilo — tocá acá si querés cambiarlas todas
+   juntas, o el selector específico de arriba/abajo si querés solo una. */
+#custom-spotify,
+#cpu,
+#memory,
+#pulseaudio,
+#tray,
+#custom-clock {
+    margin: 0 2px;
+    padding: 5px 10px;
+
+    border: 1px solid rgba(255, 251, 220, 0.58);
+    border-radius: 13px;
+
+    color: @text_main;
+
+    background: linear-gradient(
+        to bottom,
+            rgba(117, 222, 82, 0.82) 0%,
+            rgba(150, 214, 72, 0.55) 7%,
+            rgba(43, 161, 43, 0.78) 25%,
+            rgba(43, 139, 34, 0.82) 68%,
+            rgba(24, 110, 15, 0.82) 100%
+    );
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.72),
+        inset 0 -1px 0 rgba(0, 230, 245, 0.38);
+}
+
+/* Spotify gets slightly more room for the track title. */
+#custom-spotify {
+    padding-left: 11px;
+    padding-right: 11px;
+}
+
+/* Tray needs room for multiple icons. */
+#tray {
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+#tray > .passive {
+    opacity: 0.78;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   HOVER
+   ───────────────────────────────────────────────────────────── */
+
+#custom-spotify:hover,
+#cpu:hover,
+#memory:hover,
+#pulseaudio:hover,
+#tray:hover{
+    border-color: rgba(255, 255, 255, 0.85);
+
+    background: linear-gradient(
+        to bottom,
+            rgba(117, 222, 82, 0.82) 0%,
+            rgba(150, 214, 72, 0.55) 7%,
+            rgba(43, 161, 43, 0.78) 25%,
+            rgba(43, 139, 34, 0.82) 68%,
+            rgba(24, 110, 15, 0.82) 100%
+    );
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.92),
+        inset 0 -1px 0 rgba(0, 245, 255, 0.55);
+}
+
+#custom-clock{
+    margin: 0 4px 0 0;
+    padding: 5px 12px;
+    color: rgb(255, 255, 255);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.82);
+
+    background: linear-gradient(
+        to bottom,
+        rgba(240, 255, 255, 0.78) 0%,
+        rgba(95, 205, 255, 0.48) 18%,
+        rgba(20, 130, 225, 0.70) 58%,
+        rgba(0, 205, 230, 0.72) 100%
+    );
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.95),
+        inset 0 -1px 0 rgba(0, 245, 255, 0.65),
+        0 2px 5px rgba(0, 65, 150, 0.30);
+}
+#custom-clock:hover{
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.90) 0%,
+        rgba(125, 225, 255, 0.58) 18%,
+        rgba(35, 150, 240, 0.78) 58%,
+        rgba(0, 220, 238, 0.82) 100%
+    );
+}
+
+/* ─────────────────────────────────────────────────────────────
+   AUDIO
+   ───────────────────────────────────────────────────────────── */
+
+#pulseaudio.muted {
+    color: rgba(220, 247, 255, 0.70);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   CLOCK
+   ───────────────────────────────────────────────────────────── */
+
+#custom-clock {
+    margin-right: 1px;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   GENERAL TOOLTIP
+   ───────────────────────────────────────────────────────────── */
+
+tooltip {
+    border: 1px solid rgba(220, 253, 255, 0.85);
+    border-radius: 12px;
+
+    background: rgba(5, 78, 170, 0.92);
+    color: #FFFFFF;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.85),
+        0 3px 10px rgba(0, 55, 145, 0.40);
+}
+
+tooltip label {
+    padding: 4px 7px;
+}

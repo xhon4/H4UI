@@ -1,0 +1,74 @@
+/* ┌─ H4UI ──────────────────────────────────────────────
+   │ QUÉ ES:        la "burbuja" que aparece en pantalla cuando subís el
+   │                 volumen o el brillo (swayosd). Selectores oficiales
+   │                 de swayosd — no son genéricos, no inventes nombres
+   │                 nuevos acá, no van a pegar.
+   │ PODÉS CAMBIAR:  los colores (son los mismos de theme/colors/palette.toml)
+   │                 y el border-radius si la querés menos redonda.
+   │ NO TOQUES:      los nombres de selector (window#osd, progressbar,
+   │                 trough, progress, etc.) — son fijos, los define
+   │                 swayosd internamente.
+   └────────────────────────────────────────────────────── */
+
+window#osd {
+  border-radius: 999px;   /* 👉 999px = pastilla bien redonda, estilo cápsula de gel */
+  border: 1px solid rgba(255, 255, 255, 0.45);
+
+  /* Vidrio Aero: degradé blanco/celeste, igual espíritu que swaync */
+  background: linear-gradient(to bottom,
+    rgba(255, 255, 255, 0.75) 0%,
+    rgba(255, 255, 255, 0.35) 45%,
+    rgba(160, 210, 255, 0.30) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.85),   /* brillo arriba */
+    inset 0 -1px 0 rgba(11, 95, 165, 0.30),    /* linea abajo */
+    0 4px 14px rgba(0, 60, 120, 0.25);         /* sombra fría */
+
+  #container {
+    margin: 16px;
+  }
+
+  image,
+  label {
+    color: #0A2A3F;   /* 👉 ink — ícono y texto, buen contraste sobre el vidrio */
+  }
+
+  progressbar:disabled,
+  image:disabled {
+    opacity: 0.5;
+  }
+
+  /* La barra en sí: fondo transparente, el color real va en trough/progress */
+  progressbar,
+  segmentedprogress {
+    min-height: 6px;
+    border-radius: 999px;
+    background: transparent;
+    border: none;
+  }
+
+  /* El "riel" vacío de la barra */
+  trough,
+  segment {
+    min-height: inherit;
+    border-radius: inherit;
+    border: none;
+    background: rgba(10, 42, 63, 0.20);   /* 👉 ink al 20% */
+  }
+
+  /* La parte LLENA de la barra — el acento aqua de H4UI */
+  progress,
+  segment.active {
+    min-height: inherit;
+    border-radius: inherit;
+    border: none;
+    background: #29ABE2;   /* 👉 aqua — subí/bajá el volumen y vas a ver este color */
+  }
+
+  segment {
+    margin-left: 8px;
+  }
+  segment:first-child {
+    margin-left: 0;
+  }
+}

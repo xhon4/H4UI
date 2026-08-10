@@ -1,0 +1,27 @@
+/* ┌─ H4UI ──────────────────────────────────────────────
+   │ QUÉ ES:        Inyección del tema Glossy para apps de GTK.
+   └────────────────────────────────────────────────────── */
+
+/* Forzar transparencia en los menús desplegables y ventanas base */
+window, popover, menu, tooltip {
+    background-color: rgba(10, 42, 63, 0.65) !important; /* Tu color 'ink' translúcido */
+    border: 1px solid rgba(255, 255, 255, 0.45) !important;
+}
+
+/* El Glass Recipe para botones y pestañas */
+button, entry, headerbar {
+    background-image: linear-gradient(to bottom,
+      rgba(255, 255, 255, 0.38) 0%,
+      rgba(255, 255, 255, 0.10) 45%,
+      rgba(160, 210, 255, 0.12) 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.45) !important;
+    border-radius: 12px !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.65),
+      inset 0 -1px 0 rgba(11, 95, 165, 0.25) !important;
+}
+
+/* Tipografía Selawik o Nerd Font global */
+* {
+    font-family: "Selawik", "JetBrainsMono Nerd Font", sans-serif;
+}

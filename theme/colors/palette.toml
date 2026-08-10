@@ -1,0 +1,50 @@
+# ┌─ H4UI ──────────────────────────────────────────────
+# │ QUÉ ES:        la ÚNICA fuente de verdad de los colores del rice.
+# │ PODÉS CAMBIAR: cualquier hex de acá abajo, con cuidado.
+# │ NO TOQUES:     los nombres de los tokens (aqua, deep, etc.) — si los
+# │                renombrás, hay que ir a buscar y reemplazar en cada
+# │                config que los usa (waybar, rofi, starship, hyprland...).
+# └──────────────────────────────────────────────────────
+#
+# 👉 IMPORTANTE: estos valores NO son los del plan original (H4UI-plan-de-
+#    desarrollo.md / DEVELOPMENT.md §1). Son los que quedaron después de
+#    probar en la pantalla real y gustar más. Este archivo manda, el plan
+#    quedó desactualizado en ese punto.
+#
+# 👉 TAMBIÉN IMPORTANTE: por ahora este archivo es DOCUMENTACIÓN, no algo
+#    que los configs lean automáticamente (waybar/rofi/starship no parsean
+#    TOML). Es el lugar donde mirás "¿cuál es el aqua oficial?" antes de
+#    copiar un hex a mano en un archivo nuevo. Automatizar que todo lea de
+#    acá (con un generador tipo `h4ui theme apply`) queda para más adelante,
+#    si hace falta — no lo armamos antes de necesitarlo.
+
+[colors]
+aqua  = "#29ABE2"   # 👉 acento primario — barra, bordes activos, título terminal
+sky   = "#6FD3FF"   # 👉 highlights / estado "ok" de terminal (success_symbol)
+deep  = "#0B5FA5"   # 👉 azul oscuro — texto sobre vidrio, segunda burbuja starship
+leaf  = "#8CC63F"   # 👉 acento secundario — git branch, borde activo (degradé)
+ink   = "#0A2A3F"   # 👉 texto principal / fondo oscuro de terminal
+danger = "#FF5B5B"  # 👉 nuevo, no estaba en el plan original — error_symbol de starship
+
+[shadow]
+color = "rgba(0, 60, 120, 0.25)"  # sombra fría — igual en hyprland.lua y swaync, no la toques
+
+# ┌─ Variantes locales (a propósito, no es un error) ────────────────────
+# rofi/h4ui.rasi usa su propia versión un toque más clara/saturada de
+# sky/deep/ink (pensada para contraste dentro del launcher glossy).
+# No la migres a la de acá sin probarla — puede verse distinto en rofi.
+[colors.rofi_variant]
+sky  = "#73E5FF"
+deep = "#07518F"
+ink  = "#062B45"
+
+# ┌─ Variante local: waybar (definitiva, no tocar) ───────────────────────
+# waybar/style.css usa su propia paleta (aero_blue #168CFF, aero_deep
+# #0757C8, aero_cyan #00DDF2, aero_light #DDFBFF), distinta de los tokens
+# de acá arriba. Decisión del usuario: waybar y rofi ya quedaron como
+# quería y no se tocan más. No es drift a corregir — es así a propósito.
+[colors.waybar_variant]
+aero_blue  = "#168CFF"
+aero_deep  = "#0757C8"
+aero_cyan  = "#00DDF2"
+aero_light = "#DDFBFF"

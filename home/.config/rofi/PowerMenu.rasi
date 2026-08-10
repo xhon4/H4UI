@@ -1,0 +1,140 @@
+/* ┌─ H4UI ──────────────────────────────────────────────
+   │ QUÉ ES:        la PINTA del menú de apagado/logout/lock, el que se
+   │                 abre con Super + BackSpace. La lista de opciones y la
+   │                 lógica (qué comando corre cada una) está en el script
+   │                 home/.config/hypr/scripts/power_menu.sh.
+   │ PODÉS CAMBIAR: los colores de la paleta, tamaños, redondeos — igual
+   │                 que en h4ui.rasi, el tema del launcher normal.
+   │ NO TOQUES:     los nombres de bloque (window, mainbox, listview,
+   │                 element...) — rofi los busca por nombre fijo.
+   │ VA EN:         ~/.config/rofi/PowerMenu.rasi
+   └────────────────────────────────────────────────────── */
+
+/* r4chi-dotfiles · by occhi - (Frutiger Aero Edition) */
+
+* {
+    font: "JetBrainsMono Nerd Font 13";   /* 👉 tipografía y tamaño del menú */
+
+    /* Paleta Aero — 👉 mismos tokens que h4ui.rasi, cambiá acá si querés
+       que el power menu tenga otro color distinto del launcher */
+    aqua:       #29abe2ff;
+    sky:        #73e5ffff;
+    deep:       #07518fff;
+    leaf:       #8cc63fff;
+    ink:        #062b45ff;
+    glass:      #dff7ff59;
+
+    background-color: transparent;
+    text-color: @ink;
+}
+
+/* Window - Estilo plástico brillante */
+window {
+    location:      center;
+    width:         400px;
+    border:        2px;
+    border-color:  #ffffffd9;
+    border-radius: 28px;
+    background-color: @glass;
+    background-image: linear-gradient(
+        to bottom,
+        #ffffffff,
+        #ffffffd9,
+        #ffffff66,
+        #ffffff10,
+        #29abe225,
+        #1482e1b3,
+        #ffffff38
+    );
+    padding: 0px;
+}
+
+/* Mainbox */
+mainbox {
+    padding: 18px;
+    spacing: 14px;
+    background-color: transparent;
+    children: [ inputbar, message, listview ];
+}
+
+/* Inputbar - Cápsula Glossy */
+inputbar {
+    spacing: 10px;
+    padding: 13px 16px;
+    border-radius: 19px;
+    background-color: #ffffff38;
+    background-image: linear-gradient(
+        to bottom,
+        #ffffffff,
+        #ffffffef,
+        #ffffff91,
+        #ffffff24,
+        #29abe21c
+    );
+    border: 2px;
+    border-color: #ffffffff;
+    children: [ prompt, entry ];
+}
+
+/* Prompt */
+prompt {
+    padding: 0px 5px 0px 0px;
+    text-color: @deep;
+    vertical-align: 0.5;
+}
+
+/* Entry */
+entry {
+    text-color: @ink;
+    vertical-align: 0.5;
+}
+
+/* Message */
+message, textbox {
+    background-color: transparent;
+    text-color: @deep;
+    padding: 4px 5px;
+}
+
+/* Listview */
+listview {
+    spacing: 7px;
+    padding: 6px 0px 0px 0px;
+    background-color: transparent;
+    lines: 5;
+    fixed-height: true;
+    dynamic: false;
+    scrollbar: false;
+}
+
+/* Element */
+element {
+    padding: 12px 14px;
+    spacing: 12px;
+    border-radius: 15px;
+    background-color: transparent;
+    text-color: @ink;
+}
+
+/* Element Selected - Burbuja estilo Waybar */
+element selected {
+    background-color: #0a5cc3e0;
+    background-image: linear-gradient(to bottom, #f0ffffc7, #5fcdff7a, #1482e1b3, #00cde6b8);
+    text-color: #ffffffff;
+    border: 2px;
+    border-color: #ffffffff;
+    border-radius: 15px;
+}
+
+/* Element text / icon */
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+    vertical-align: 0.5;
+}
+
+element-icon {
+    background-color: transparent;
+    text-color: transparent;
+    size: 0px;
+}

@@ -1,0 +1,42 @@
+;; ┌─ H4UI ──────────────────────────────────────────────
+;; │ QUÉ ES:        La estructura de la hoja de trucos (Cheatsheet) en pantalla.
+;; │ PODÉS CAMBIAR: Los textos de los atajos si decidís cambiarlos en Hyprland.
+;; │ NO TOQUES:     La sintaxis de paréntesis, Eww es muy sensible a eso.
+;; └──────────────────────────────────────────────────────
+
+(defwindow cheatsheet
+  :monitor 0
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :width "680px"
+                      :height "450px"
+                      :anchor "center")
+  :stacking "overlay"
+  :windowtype "dialog"
+  (box :class "glossy-window" :orientation "v" :space-evenly false
+    (label :class "title" :text "󰟥 Guía Rápida H4UI")
+    (box :class "content" :orientation "h" :space-evenly true :spacing 20
+      ;; Columna Izquierda (Básicos)
+      (box :orientation "v" :space-evenly false :spacing 12
+        (label :class "category" :text "Básicos y Apps")
+        (label :class "shortcut" :text "SUPER + Enter  ──  Terminal")
+        (label :class "shortcut" :text "SUPER + A      ──  Buscar Apps")
+        (label :class "shortcut" :text "SUPER + E      ──  Archivos")
+        (label :class "shortcut" :text "SUPER + .      ──  Emojis")
+        (label :class "shortcut" :text "SUPER + /      ──  Esta Ayuda")
+      )
+      ;; Columna Derecha (Ventanas)
+      (box :orientation "v" :space-evenly false :spacing 12
+        (label :class "category" :text "Ventanas y Sistema")
+        (label :class "shortcut" :text "SUPER + Q      ──  Cerrar Ventana")
+        (label :class "shortcut" :text "SUPER + F      ──  Pantalla Completa")
+        (label :class "shortcut" :text "SUPER + V      ──  Ventana Flotante")
+        (label :class "shortcut" :text "SUPER + L      ──  Bloquear PC")
+        (label :class "shortcut" :text "SUPER + BackSp ──  Menú de Apagado")
+      )
+    )
+    (label :class "footer" :text "Usa SUÉR + 1..9 para cambiar de escritorio. ¡Si rompés algo, abrí la terminal y escribí 'h4ui reset'!")
+    (label :class "footer" :text "¡Si rompés algo, abrí la terminal y escribí 'h4ui reset'!")
+
+  )
+)

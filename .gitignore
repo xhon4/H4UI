@@ -1,0 +1,16 @@
+# ┌─ H4UI ──────────────────────────────────────────────
+# │ QUÉ ES:        qué NO se sube al repo.
+# │ PODÉS CAMBIAR: agregar más patrones si tu editor/SO deja basura propia.
+# │ NO TOQUES:     la línea de .atl/ — es la caché interna de Claude Code
+# │                 (herramienta con la que se construyó H4UI), no es parte
+# │                 del rice y no le sirve a nadie que clone el repo.
+# └──────────────────────────────────────────────────────
+
+# Caché/estado interno de Claude Code (herramienta de desarrollo, no del rice)
+.atl/
+
+# Basura típica de editores y sistemas operativos
+.DS_Store
+*.swp
+*.swo
+*~

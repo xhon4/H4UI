@@ -1,0 +1,60 @@
+# H4UI · theme/kvantum/H4UI/H4UI.kvconfig
+#
+# QUÉ ES: recolor de Kvantum para que Qt (KDE apps, algunos diálogos,
+#   qBittorrent, etc.) siga la paleta H4UI. NO es un tema Kvantum desde
+#   cero — reusa las formas/SVG del tema base "Kvantum" (el que instala
+#   el paquete kvantum-qt5) y solo pisa los colores acá abajo. Cualquier
+#   sección/clave que no está en este archivo cae al default de Kvantum,
+#   así que no hace falta redefinir todo.
+#
+# NO TOQUES: los nombres de clave (window.color, base.color, etc.) —
+#   son fijos, los define Kvantum. Fuente: doc oficial (Theme-Config).
+#
+# 👉 PODÉS CAMBIAR: cualquier hex de acá abajo. Vienen 1:1 de
+#   theme/colors/palette.toml — si cambiás uno, cambialo ahí primero.
+#
+# NOTA: este archivo por sí solo NO alcanza para que Kvantum lo use como
+# tema — necesita un H4UI.svg al lado (se copia del tema base "Kvantum"
+# en tiempo de instalación, no se versiona acá porque es un asset de
+# terceros). Ver Fase 8 / scripts/40-themes.sh.
+
+[%General]
+author=H4UI
+comment=Frutiger Aero recolor sobre el tema base Kvantum
+
+[GeneralColors]
+window.color=#0A2A3F
+inactive.window.color=#0A2A3F
+window.text.color=#F2FBFF
+inactive.window.text.color=#9FC4DA
+
+base.color=#0F3A54
+inactive.base.color=#0F3A54
+alt.base.color=#123F5C
+inactive.alt.base.color=#123F5C
+text.color=#F2FBFF
+inactive.text.color=#9FC4DA
+
+button.color=#16496A
+button.text.color=#F2FBFF
+disabled.text.color=#5C7E92
+
+light.color=#6FD3FF
+mid.light.color=#29ABE2
+dark.color=#0B5FA5
+mid.color=#123F5C
+shadow.color=#00263D
+
+highlight.color=#29ABE2
+inactive.highlight.color=#0B5FA5
+highlight.text.color=#FFFFFF
+inactive.highlight.text.color=#F2FBFF
+
+tooltip.base.color=#0A2A3F
+tooltip.text.color=#F2FBFF
+
+link.color=#6FD3FF
+link.visited.color=#8CC63F
+
+progress.indicator.text.color=#0A2A3F
+progress.inactive.indicator.text.color=#9FC4DA

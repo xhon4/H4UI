@@ -1,0 +1,139 @@
+/* ┌─ H4UI ──────────────────────────────────────────────
+   │ QUÉ ES:        el tema visual (vidrio Frutiger Aero) para apps GTK4
+   │                 "clásicas" que sí cargan un theme por nombre.
+   │ PODÉS CAMBIAR: los colores de la paleta y de cada widget.
+   │ NO TOQUES:     los nombres de selector/widget ni los @define-color de
+   │                 "named colors de libadwaita" del final — muchas apps
+   │                 GNOME buscan esos nombres exactos.
+   │ VA EN:         theme/gtk/H4UI/gtk-4.0/gtk.css — OJO: las apps
+   │                 libadwaita (nautilus moderno, GNOME nuevo) NO leen
+   │                 este archivo, leen home/.config/gtk-4.0/gtk.css.
+   └────────────────────────────────────────────────────── */
+
+/*
+ * H4UI · gtk-4.0/gtk.css
+ * Frutiger Aero glass para apps GTK4 clásicas (no-libadwaita) que sí
+ * respetan el theme instalado por nombre.
+ *
+ * OJO: las apps libadwaita (nautilus moderno, la mayoría del GNOME nuevo)
+ * NO leen esto — solo leen ~/.config/gtk-4.0/gtk.css (override de usuario,
+ * siempre activo). Ese archivo vive en home/.config/gtk-4.0/gtk.css y usa
+ * los "named colors" de libadwaita en vez de selectores de widget.
+ *
+ * Fuente de verdad de color: theme/colors/palette.toml
+ */
+
+@define-color aqua    #29ABE2;
+@define-color sky     #6FD3FF;
+@define-color deep    #0B5FA5;
+@define-color leaf    #8CC63F;
+@define-color ink     #0A2A3F;
+@define-color danger  #FF5B5B;
+
+@define-color glass_top     rgba(255,255,255,0.38);
+@define-color glass_mid     rgba(255,255,255,0.10);
+@define-color glass_bottom  rgba(160,210,255,0.12);
+@define-color glass_border  rgba(255,255,255,0.45);
+@define-color cold_shadow   rgba(0,60,120,0.25);
+
+@define-color window_bg  @ink;
+@define-color text_main  #F2FBFF;
+@define-color text_dim   rgba(242,251,255,0.65);
+
+window { background-color: @window_bg; color: @text_main; }
+
+headerbar {
+  background-image: linear-gradient(to bottom,
+    @glass_top 0%, @glass_mid 45%, @glass_bottom 100%);
+  border-bottom: 1px solid @glass_border;
+  box-shadow:
+    inset 0 1px 0 @glass_top,
+    inset 0 -1px 0 alpha(@deep, 0.25),
+    0 4px 14px @cold_shadow;
+  color: @text_main;
+}
+
+button {
+  background-image: linear-gradient(to bottom,
+    alpha(#FFFFFF, 0.28) 0%, alpha(#FFFFFF, 0.06) 45%, alpha(@deep, 0.10) 100%);
+  border: 1px solid @glass_border;
+  border-radius: 8px;
+  color: @text_main;
+}
+
+button:hover {
+  background-image: linear-gradient(to bottom, alpha(@sky, 0.45) 0%, alpha(@deep, 0.18) 100%);
+  border-color: @sky;
+}
+
+button.suggested-action { background-color: @leaf; color: @ink; }
+button.destructive-action { background-color: @danger; color: #FFFFFF; }
+
+entry {
+  background-color: alpha(#FFFFFF, 0.08);
+  border: 1px solid alpha(@sky, 0.35);
+  border-radius: 6px;
+  color: @text_main;
+}
+
+entry:focus-within { border-color: @aqua; }
+
+selection, *:selected { background-color: alpha(@aqua, 0.55); color: #FFFFFF; }
+
+scrollbar slider {
+  background-color: alpha(@sky, 0.35);
+  border-radius: 8px;
+}
+scrollbar slider:hover { background-color: alpha(@aqua, 0.55); }
+
+/* ─────────────────────────────────────────────────────────────
+   Named colors de libadwaita — por si esta hoja SÍ llega a cargarse
+   (apps GTK4 sin libadwaita que resuelven tema por nombre).
+   El override real para libadwaita vive en home/.config/gtk-4.0/gtk.css.
+   ───────────────────────────────────────────────────────────── */
+
+@define-color accent_color @aqua;
+@define-color accent_bg_color @deep;
+@define-color accent_fg_color #FFFFFF;
+
+@define-color window_bg_color @ink;
+@define-color window_fg_color @text_main;
+@define-color view_bg_color alpha(#FFFFFF, 0.06);
+@define-color view_fg_color @text_main;
+
+@define-color headerbar_bg_color alpha(@deep, 0.55);
+@define-color headerbar_fg_color @text_main;
+@define-color headerbar_border_color @glass_border;
+@define-color headerbar_backdrop_color alpha(@ink, 0.9);
+@define-color headerbar_shade_color @cold_shadow;
+
+@define-color card_bg_color alpha(#FFFFFF, 0.06);
+@define-color card_fg_color @text_main;
+@define-color card_shade_color @cold_shadow;
+
+@define-color popover_bg_color alpha(@ink, 0.95);
+@define-color popover_fg_color @text_main;
+
+@define-color sidebar_bg_color alpha(@deep, 0.30);
+@define-color sidebar_fg_color @text_main;
+@define-color sidebar_backdrop_color alpha(@ink, 0.9);
+@define-color sidebar_shade_color @cold_shadow;
+
+@define-color destructive_color @danger;
+@define-color destructive_bg_color @danger;
+@define-color destructive_fg_color #FFFFFF;
+
+@define-color success_color @leaf;
+@define-color success_bg_color @leaf;
+@define-color success_fg_color @ink;
+
+@define-color warning_color #F5C542;
+@define-color warning_bg_color #F5C542;
+@define-color warning_fg_color @ink;
+
+@define-color error_color @danger;
+@define-color error_bg_color @danger;
+@define-color error_fg_color #FFFFFF;
+
+@define-color shade_color @cold_shadow;
+@define-color scrollbar_outline_color alpha(@ink, 0.5);

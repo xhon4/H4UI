@@ -1,0 +1,151 @@
+/* ┌─ H4UI ──────────────────────────────────────────────
+   │ QUÉ ES:        la PINTA del launcher rofi — el plástico brillante
+   │                 celeste, tipo "burbuja de gel" cuando seleccionás algo.
+   │ PODÉS CAMBIAR: los colores de la paleta de acá abajo, tamaños de
+   │                 fuente, redondeos (border-radius), padding.
+   │ NO TOQUES:     los nombres de bloque (window, mainbox, inputbar,
+   │                 listview, element...) — son los widgets que rofi
+   │                 busca por nombre fijo.
+   │ VA EN:         ~/.config/rofi/h4ui.rasi (cargado desde config.rasi
+   │                 con @theme "h4ui"). Se abre con Super + A.
+   └────────────────────────────────────────────────────── */
+
+* {
+    font: "JetBrainsMono Nerd Font 12";   /* 👉 tipografía y tamaño del launcher */
+
+    /* Paleta Aero — 👉 cambiá estos hex para retocar el color del launcher */
+    aqua:       #29abe2ff;
+    sky:        #73e5ffff;
+    deep:       #07518fff;
+    leaf:       #8cc63fff;
+    ink:        #062b45ff;
+    glass:      #dff7ff59;
+
+    background-color: transparent;
+    text-color: @ink;
+}
+
+/* Window - Estilo plástico brillante (Más angosto) */
+window {
+    location:      center;
+    width:         540px;
+    border:        2px;
+    border-color:  #ffffffd9;
+    border-radius: 24px;   /* 👉 qué tan redondeada es la ventana del launcher */
+    background-color: @glass;
+    background-image: linear-gradient(
+        to bottom,
+        #ffffffff,
+        #ffffffd9,
+        #ffffff66,
+        #ffffff10,
+        #29abe225,
+        #1482e1b3,
+        #ffffff38
+    );
+    padding: 0px;
+}
+
+/* Mainbox - Menos relleno general */
+mainbox {
+    padding: 14px;
+    spacing: 10px;
+    background-color: transparent;
+    children: [ inputbar, message, listview ];
+}
+
+/* Inputbar - Cápsula Glossy más finita */
+inputbar {
+    spacing: 8px;
+    padding: 10px 14px;
+    border-radius: 16px;
+    background-color: #ffffff38;
+    background-image: linear-gradient(
+        to bottom,
+        #ffffffff,
+        #ffffffef,
+        #ffffff91,
+        #ffffff24,
+        #29abe21c
+    );
+    border: 2px;
+    border-color: #ffffffff;
+    children: [ prompt, entry ];
+}
+
+/* Prompt */
+prompt {
+    padding: 0px 5px 0px 0px;
+    text-color: @deep;
+    vertical-align: 0.5;
+}
+
+/* Entry */
+entry {
+    placeholder: "Buscar aplicaciones…";
+    placeholder-color: #062b4580;
+    text-color: @ink;
+    vertical-align: 0.5;
+}
+
+/* Message */
+message, textbox {
+    background-color: transparent;
+    text-color: @deep;
+    padding: 4px 5px;
+}
+
+/* Listview - 7 líneas en vez de 8 */
+listview {
+    lines: 7;
+    columns: 1;
+    spacing: 5px;
+    padding: 6px 0px 0px 0px;
+    scrollbar: false;
+    background-color: transparent;
+}
+
+/* Element - Ítems más compactos */
+element {
+    padding: 10px 12px;
+    spacing: 10px;
+    border-radius: 12px;
+    background-color: transparent;
+    text-color: @ink;
+    children: [ element-icon, element-text ];
+}
+
+/* Element Selected - Burbuja estilo Waybar */
+element selected {
+    background-color: #0a5cc3e0;
+    /* 👉 el color/degradé de la "burbuja" cuando marcás una app con el cursor */
+    background-image: linear-gradient(to bottom, #f0ffffc7, #5fcdff7a, #1482e1b3, #00cde6b8);
+    text-color: #ffffffff;
+    border: 2px;
+    border-color: #ffffffff;
+    border-radius: 12px;
+}
+
+/* Mantener transparencia dentro de la selección */
+element selected element-icon,
+element selected element-text {
+    background-color: transparent;
+    text-color: inherit;
+}
+
+/* Element text / icon */
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+    vertical-align: 0.5;
+}
+
+element-icon {
+    size: 24px;
+    vertical-align: 0.5;
+    background-color: transparent;
+}
+
+element.alternate.normal {
+    background-color: transparent;
+}

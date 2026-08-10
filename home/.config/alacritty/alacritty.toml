@@ -1,0 +1,28 @@
+# ┌─ H4UI ──────────────────────────────────────────────
+# │ QUÉ ES:        La configuración de tu terminal, ahora con efecto cristal profundo.
+# │ PODÉS CAMBIAR: El nivel de desenfoque (opacidad) si te cuesta leer.
+# │ NO TOQUES:     Los valores hex, vienen de la paleta oficial de H4UI.
+# └──────────────────────────────────────────────────────
+
+[window]
+padding = { x = 16, y = 16 } # 👉 Más espacio para que las cápsulas respiren
+opacity = 0.60               # 👉 Mucho más transparente para maximizar el blur de Hyprland
+
+[font]
+size = 12.0
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+
+[colors.primary]
+background = "#0A2A3F" # ink 
+foreground = "#FFFFFF" # 👉 Blanco puro para máximo contraste contra el vidrio oscuro
+
+[colors.normal]
+black   = "#434f8b"
+red     = "#d66a03" 
+green   = "#A5CA9D" # leaf
+yellow  = "#B1CFAF" # lime
+blue    = "#2a6fd8" # aqua
+magenta = "#D4E7CF"
+cyan    = "#D4E7CF" # sky
+white   = "#e3e8e1"

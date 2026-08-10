@@ -1,0 +1,40 @@
+# ┌─ H4UI ──────────────────────────────────────────────
+# │ QUÉ ES:        Tu línea de comandos transformada en cápsulas de gel Frutiger Aero.
+# │ PODÉS CAMBIAR: El símbolo de éxito (la flechita).
+# │ NO TOQUES:     Los glifos  y , ¡son los que hacen el borde redondo de las burbujas!
+# └──────────────────────────────────────────────────────
+
+add_newline = false
+
+# 👉 Formato de burbujas flotantes separadas por espacios.
+format = """
+[](#29ABE2)\
+$os\
+[](#29ABE2) \
+[](#0B5FA5)\
+$directory\
+[](#0B5FA5) \
+[](#8CC63F)\
+$git_branch\
+[](#8CC63F)\
+\n$character"""
+
+[os]
+disabled = false
+# Fondo aqua, texto e ícono blanco
+format = "[󰣇 ](bg:#29ABE2 fg:#FFFFFF)"
+
+[directory]
+# Fondo deep blue, texto blanco
+format = "[$path](bg:#0B5FA5 fg:#FFFFFF)"
+truncation_length = 3
+truncate_to_repo = false
+
+[git_branch]
+# Fondo leaf green, texto blanco
+format = "[ $branch](bg:#8CC63F fg:#FFFFFF)"
+
+[character]
+# Un símbolo más curvo y suave que acompaña la estética
+success_symbol = "[ ╰─❯](bold #6FD3FF)" 
+error_symbol = "[ ╰─❯](bold #FF5B5B)"

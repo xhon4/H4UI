@@ -1,0 +1,61 @@
+/* ┌─ H4UI ──────────────────────────────────────────────
+   │ QUÉ ES:        la pinta (colores, tipografía, vidrio) del cheatsheet
+   │                 de atajos que se abre con Super + /. La estructura de
+   │                 esa ventana está en el eww.yuck de al lado.
+   │ PODÉS CAMBIAR: colores, tamaños de letra, redondeos, sombras — todo
+   │                 lo de acá abajo es puramente visual.
+   │ NO TOQUES:     los nombres de clase (.glossy-window, .title, .category,
+   │                 .shortcut, .footer) — tienen que ser idénticos a los
+   │                 que usa eww.yuck, si no dejan de aplicarse los estilos.
+   │ VA EN:         ~/.config/eww/eww.scss
+   └────────────────────────────────────────────────────── */
+
+* {
+  font-family: "JetBrainsMono Nerd Font", sans-serif;   /* 👉 tipografía de todo el cheatsheet */
+}
+
+.glossy-window {
+  /* En GTK, usar 'background' directamente suele funcionar mejor que separar color e imagen */
+  background: linear-gradient(to bottom,        /* 👉 el degradé del vidrio, jugá con estos rgba */
+    rgba(255, 255, 255, 0.45) 0%,
+    rgba(255, 255, 255, 0.15) 45%,
+    rgba(160, 210, 255, 0.25) 100%);
+
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 20px;                          /* 👉 qué tan redondeada es la ventana */
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.85),
+    inset 0 -1px 0 rgba(11, 95, 165, 0.25),
+    0 4px 14px rgba(0, 60, 120, 0.35);
+
+  padding: 30px;                                /* 👉 aire interno de la ventana */
+}
+
+.title {
+  font-size: 24px;       /* 👉 tamaño del título "Guía Rápida H4UI" */
+  font-weight: bold;
+  color: #0B5FA5;        /* 👉 color del título */
+  margin-bottom: 25px;
+  /* Sacamos el text-shadow porque a veces rompe las labels en eww */
+}
+
+.category {
+  font-size: 16px;       /* 👉 tamaño de "Básicos y Apps" / "Ventanas y Sistema" */
+  font-weight: bold;
+  color: #8CC63F;        /* 👉 color de esos subtítulos */
+  margin-bottom: 8px;
+}
+
+.shortcut {
+  font-size: 14px;       /* 👉 tamaño de cada línea de atajo */
+  font-weight: bold;
+  color: #0A2A3F;
+}
+
+.footer {
+  font-size: 12px;       /* 👉 tamaño del texto de ayuda de abajo */
+  font-weight: bold;
+  color: #0B5FA5;
+  margin-top: 30px;
+}

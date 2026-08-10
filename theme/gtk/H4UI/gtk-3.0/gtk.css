@@ -1,0 +1,241 @@
+/* ┌─ H4UI ──────────────────────────────────────────────
+   │ QUÉ ES:        el tema visual (vidrio Frutiger Aero) que usan las
+   │                 apps GTK3 — Firefox, nautilus viejo, ventanas de diálogo.
+   │ PODÉS CAMBIAR: los colores de la sección PALETTE y los valores de
+   │                 gradientes/sombras de cada widget (botones, entry, etc.).
+   │ NO TOQUES:     los nombres de los widgets/selectores (button, entry,
+   │                 headerbar...) — son los que GTK busca por convención.
+   │ VA EN:         theme/gtk/H4UI/gtk-3.0/gtk.css (el tema instalado como
+   │                 "H4UI"; se activa desde gtk-3.0/settings.ini).
+   └────────────────────────────────────────────────────── */
+
+/*
+ * H4UI · gtk-3.0/gtk.css
+ * Frutiger Aero glass para apps GTK3 (Firefox, nautilus legacy, diálogos, etc.)
+ * Fuente de verdad de color: theme/colors/palette.toml
+ * Gloss recipe: DEVELOPMENT.md §1
+ */
+
+/* ─────────────────────────────────────────────────────────────
+   PALETTE (theme/colors/palette.toml) — 👉 la fuente real de estos
+   valores es ese archivo. Si lo cambiás ahí, actualizá acá a mano
+   (esta hoja todavía no se genera automáticamente).
+   ───────────────────────────────────────────────────────────── */
+
+@define-color aqua    #29ABE2;
+@define-color sky     #6FD3FF;
+@define-color deep    #0B5FA5;
+@define-color leaf    #8CC63F;
+@define-color ink     #0A2A3F;
+@define-color danger  #FF5B5B;
+
+@define-color glass_top     rgba(255,255,255,0.38);
+@define-color glass_mid     rgba(255,255,255,0.10);
+@define-color glass_bottom  rgba(160,210,255,0.12);
+@define-color glass_border  rgba(255,255,255,0.45);
+@define-color cold_shadow   rgba(0,60,120,0.25);
+
+@define-color window_bg     @ink;
+@define-color text_main     #F2FBFF;
+@define-color text_dim      rgba(242,251,255,0.65);
+
+/* ─────────────────────────────────────────────────────────────
+   BASE
+   ───────────────────────────────────────────────────────────── */
+
+* {
+  outline-color: alpha(@aqua, 0.5);
+}
+
+window {
+  background-color: @window_bg;
+  color: @text_main;
+}
+
+label { color: @text_main; }
+.dim-label { color: @text_dim; }
+
+/* selección de texto en cualquier lado */
+selection, *:selected {
+  background-color: alpha(@aqua, 0.55);
+  color: #FFFFFF;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   HEADERBAR — el "vidrio" de arriba (gloss recipe)
+   ───────────────────────────────────────────────────────────── */
+
+headerbar {
+  background-image: linear-gradient(to bottom,
+    @glass_top 0%,
+    @glass_mid 45%,
+    @glass_bottom 100%);
+  border-bottom: 1px solid @glass_border;
+  box-shadow:
+    inset 0 1px 0 @glass_top,
+    inset 0 -1px 0 alpha(@deep, 0.25),
+    0 4px 14px @cold_shadow;
+  color: @text_main;
+  padding: 4px;
+}
+
+headerbar .title { font-weight: 600; }
+headerbar .subtitle { color: @text_dim; }
+
+/* ─────────────────────────────────────────────────────────────
+   BOTONES
+   ───────────────────────────────────────────────────────────── */
+
+/* 👉 look de los botones normales. Cambiá los colores si querés otro tono. */
+button {
+  background-image: linear-gradient(to bottom,
+    alpha(#FFFFFF, 0.28) 0%,
+    alpha(#FFFFFF, 0.06) 45%,
+    alpha(@deep, 0.10) 100%);
+  border: 1px solid @glass_border;
+  border-radius: 8px;   /* 👉 qué tan redondeados */
+  box-shadow:
+    inset 0 1px 0 alpha(#FFFFFF, 0.55),
+    0 2px 6px @cold_shadow;
+  color: @text_main;
+  transition: all 120ms ease-out;
+}
+
+button:hover {
+  background-image: linear-gradient(to bottom,
+    alpha(@sky, 0.45) 0%,
+    alpha(@aqua, 0.20) 45%,
+    alpha(@deep, 0.18) 100%);
+  border-color: @sky;
+}
+
+button:active, button:checked {
+  background-image: linear-gradient(to bottom,
+    alpha(@deep, 0.55) 0%,
+    alpha(@aqua, 0.35) 100%);
+  box-shadow: inset 0 2px 4px alpha(#000000, 0.25);
+}
+
+button.suggested-action {
+  background-image: linear-gradient(to bottom, @leaf 0%, alpha(@leaf, 0.75) 100%);
+  border-color: @leaf;
+  color: @ink;
+}
+
+button.destructive-action {
+  background-image: linear-gradient(to bottom, @danger 0%, alpha(@danger, 0.75) 100%);
+  border-color: @danger;
+  color: #FFFFFF;
+}
+
+button:disabled { opacity: 0.45; box-shadow: none; }
+
+/* ─────────────────────────────────────────────────────────────
+   CAMPOS DE TEXTO
+   ───────────────────────────────────────────────────────────── */
+
+entry {
+  background-color: alpha(#FFFFFF, 0.08);
+  border: 1px solid alpha(@sky, 0.35);
+  border-radius: 6px;
+  color: @text_main;
+  box-shadow: inset 0 1px 3px alpha(#000000, 0.20);
+}
+
+entry:focus {
+  border-color: @aqua;
+  box-shadow: inset 0 1px 3px alpha(#000000, 0.20), 0 0 0 2px alpha(@aqua, 0.30);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   CHECKBOX / RADIO / SWITCH — leaf = "activado", como el plan dice
+   ───────────────────────────────────────────────────────────── */
+
+checkbutton check, radiobutton radio {
+  background-color: alpha(#FFFFFF, 0.10);
+  border: 1px solid @glass_border;
+}
+
+checkbutton check:checked, radiobutton radio:checked {
+  background-color: @leaf;
+  border-color: @leaf;
+}
+
+switch {
+  background-color: alpha(#FFFFFF, 0.15);
+  border: 1px solid @glass_border;
+  border-radius: 12px;
+}
+
+switch:checked {
+  background-image: linear-gradient(to bottom, @leaf, alpha(@leaf, 0.8));
+}
+
+switch slider {
+  background-color: #FFFFFF;
+  box-shadow: 0 1px 3px @cold_shadow;
+  border-radius: 10px;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   SCROLLBAR — fino y de vidrio, no el gris de siempre
+   ───────────────────────────────────────────────────────────── */
+
+scrollbar { background-color: transparent; }
+
+scrollbar slider {
+  background-color: alpha(@sky, 0.35);
+  border-radius: 8px;
+  min-width: 8px;
+  min-height: 8px;
+}
+
+scrollbar slider:hover { background-color: alpha(@aqua, 0.55); }
+
+/* ─────────────────────────────────────────────────────────────
+   MENÚS / POPOVERS — mismo vidrio que headerbar, más opaco para legibilidad
+   ───────────────────────────────────────────────────────────── */
+
+menu, popover, .background {
+  background-image: linear-gradient(to bottom,
+    alpha(@deep, 0.85) 0%,
+    alpha(@ink, 0.92) 100%);
+  border: 1px solid @glass_border;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px @cold_shadow;
+  color: @text_main;
+}
+
+menuitem:hover { background-color: alpha(@aqua, 0.35); border-radius: 6px; }
+
+/* ─────────────────────────────────────────────────────────────
+   NOTEBOOK (tabs) / PROGRESSBAR
+   ───────────────────────────────────────────────────────────── */
+
+notebook > header { background-color: transparent; }
+notebook > header tab { color: @text_dim; padding: 6px 10px; }
+notebook > header tab:checked {
+  color: @text_main;
+  box-shadow: inset 0 -2px 0 @aqua;
+}
+
+progressbar progress {
+  background-image: linear-gradient(to right, @deep, @aqua);
+  border-radius: 6px;
+}
+
+progressbar trough {
+  background-color: alpha(#FFFFFF, 0.10);
+  border-radius: 6px;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   TOOLTIP
+   ───────────────────────────────────────────────────────────── */
+
+tooltip {
+  background-color: alpha(@ink, 0.95);
+  border: 1px solid @glass_border;
+  border-radius: 6px;
+  color: @text_main;
+}

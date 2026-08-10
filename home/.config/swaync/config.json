@@ -1,0 +1,39 @@
+{
+  "$schema": "/etc/xdg/swaync/configSchema.json",
+  "positionX": "right",
+  "positionY": "top",
+  "control-center-margin-top": 10,
+  "control-center-margin-bottom": 10,
+  "control-center-margin-right": 10,
+  "control-center-margin-left": 10,
+  "control-center-width": 380,
+  "control-center-height": 600,
+  "fit-to-screen": false,
+
+  "layer": "overlay",
+  "control-center-layer": "overlay",
+  "cssPriority": "user",
+
+  "notification-icon-size": 48,
+  "notification-body-image-height": 120,
+  "notification-body-image-width": 160,
+  "timeout": 8,
+  "timeout-low": 4,
+  "timeout-critical": 0,
+
+  "widgets": [
+    "title",
+    "dnd",
+    "notifications"
+  ],
+  "widget-config": {
+    "title": {
+      "text": "Notificaciones",
+      "clear-all-button": true,
+      "button-text": "󰎟 Borrar todas"
+    },
+    "dnd": {
+      "text": "No molestar"
+    }
+  }
+}
