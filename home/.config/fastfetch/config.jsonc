@@ -1,0 +1,43 @@
+// ┌─ H4UI ──────────────────────────────────────────────
+// │ QUÉ ES:        lo que muestra fastfetch al abrir la terminal — el
+// │                 pececito ASCII (Frutiger Aero) + los datos del
+// │                 sistema. fastfetch se llama solo desde ~/.zshrc.
+// │ PODÉS CAMBIAR: el color del pez (logo.color.1), qué datos aparecen
+// │                 (la lista "modules") y el color de las etiquetas 👉.
+// │ NO TOQUES:     logo.source — apunta al ascii.txt de al lado; si lo
+// │                 movés o lo renombrás, el pez desaparece.
+// │ VA EN:         ~/.config/fastfetch/config.jsonc
+// └──────────────────────────────────────────────────────
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+
+    "logo": {
+        "type": "file",
+        "source": "~/.config/fastfetch/ascii.txt",
+        // 👉 color del pez — aqua H4UI (#29ABE2 = R:41 G:171 B:226).
+        //    Cambiá los tres números si querés otro tono.
+        "color": { "1": "38;2;41;171;226" },
+        "padding": { "top": 1, "left": 2, "right": 4 }
+    },
+
+    // 👉 separación entre la etiqueta (Distro, Kernel...) y su valor.
+    "display": { "separator": "  " },
+
+    // 👉 qué se muestra y en qué orden. Sacá o reordená líneas a gusto;
+    //    keyColor es el color de la etiqueta (aqua #29ABE2 / verde #8CC63F).
+    "modules": [
+        "title",
+        "separator",
+        { "type": "os",       "key": "Distro",     "keyColor": "38;2;41;171;226" },
+        { "type": "kernel",   "key": "Kernel",     "keyColor": "38;2;41;171;226" },
+        { "type": "uptime",   "key": "Encendida",  "keyColor": "38;2;41;171;226" },
+        { "type": "packages", "key": "Paquetes",   "keyColor": "38;2;41;171;226" },
+        { "type": "wm",       "key": "Escritorio", "keyColor": "38;2;41;171;226" },
+        { "type": "shell",    "key": "Shell",      "keyColor": "38;2;41;171;226" },
+        { "type": "terminal", "key": "Terminal",   "keyColor": "38;2;41;171;226" },
+        { "type": "cpu",      "key": "CPU",        "keyColor": "38;2;140;198;63" },
+        { "type": "memory",   "key": "Memoria",    "keyColor": "38;2;140;198;63" },
+        "break",
+        { "type": "colors", "symbol": "circle" }
+    ]
+}
