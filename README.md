@@ -7,7 +7,7 @@ a mano después.
 ## Instalar
 
 ```
-git clone <la-url-de-este-repo>
+git clone https://github.com/xhon4/H4UI.git
 cd H4UI
 ./install.sh
 ```
