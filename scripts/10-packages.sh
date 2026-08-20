@@ -48,6 +48,13 @@ OFFICIAL_PACKAGES=(
     playerctl grim slurp swappy cliphist wl-clipboard swayosd nautilus
     fastfetch jq qt5ct qt6ct kvantum kvantum-qt5 gum python polkit
     fontconfig
+    # 👉 Módulos Qt6 que el tema SDDM h4ui-sddm NECESITA para renderizar y
+    # que sddm NO arrastra como dependencia: qt6-5compat (el DropShadow del
+    # panel de vidrio), qt6-svg (los íconos .svgz de apagar/reiniciar) y
+    # qt6-virtualkeyboard (lo carga un Loader del tema aunque el teclado en
+    # pantalla esté apagado). Sin estos, SDDM arranca en blanco o con el
+    # tema gris de fábrica en una máquina recién instalada.
+    qt6-5compat qt6-svg qt6-virtualkeyboard
     pipewire pipewire-pulse pipewire-alsa wireplumber
     git base-devel
 )
