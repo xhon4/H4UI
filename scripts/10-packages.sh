@@ -46,7 +46,7 @@ OFFICIAL_PACKAGES=(
     awww sddm papirus-icon-theme ttf-jetbrains-mono-nerd hyprpolkitagent
     network-manager-applet blueman pavucontrol udiskie brightnessctl
     playerctl grim slurp swappy cliphist wl-clipboard swayosd nautilus
-    fastfetch jq qt5ct qt6ct kvantum kvantum-qt5 gum python3 polkit
+    fastfetch jq qt5ct qt6ct kvantum kvantum-qt5 gum python polkit
     fontconfig
     pipewire pipewire-pulse pipewire-alsa wireplumber
     git base-devel

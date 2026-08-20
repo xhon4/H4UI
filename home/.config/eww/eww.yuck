@@ -35,8 +35,7 @@
         (label :class "shortcut" :text "SUPER + BackSp ──  Menú de Apagado")
       )
     )
-    (label :class "footer" :text "Usa SUÉR + 1..9 para cambiar de escritorio. ¡Si rompés algo, abrí la terminal y escribí 'h4ui reset'!")
-    (label :class "footer" :text "¡Si rompés algo, abrí la terminal y escribí 'h4ui reset'!")
+    (label :class "footer" :text "Usa SUPER + 1..9 para cambiar de escritorio. ¡Si rompés algo, abrí la terminal y escribí 'h4ui reset'!")
 
   )
 )

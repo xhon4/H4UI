@@ -31,5 +31,5 @@ case "$chosen" in
     "󰜉 Reboot")   systemctl reboot ;;
     "󰍁 Lock")     loginctl lock-session ;;
     "󰒲 Suspend")  systemctl suspend ;;
-    "󰗽 Logout")   hyprctl dispatch 'hl.dsp.exit()' ;;
+    "󰗽 Logout")   hyprctl dispatch exit ;;
 esac

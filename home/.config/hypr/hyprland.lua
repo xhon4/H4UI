@@ -121,7 +121,7 @@ hl.animation({ leaf = "layers",     enabled = true, speed = 5, bezier = "h4uiSmo
 -- │ PODÉS CAMBIAR: nada, salvo agregar más apps a la lista.
 -- │ NO TOQUES:     los "namespace" (son los nombres internos de cada app).
 -- └─────────────────────────────────────────────────────────────────────
-hl.layer_rule({ match = { namespace = "waybar" },                               })
+hl.layer_rule({ match = { namespace = "waybar" },                   blur = true })
 hl.layer_rule({ match = { namespace = "rofi" },                     blur = true })
 hl.layer_rule({ match = { namespace = "swaync-notification-window" }, blur = true })
 hl.layer_rule({ match = { namespace = "swaync-control-center" },    blur = true })
