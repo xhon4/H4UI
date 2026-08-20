@@ -1,9 +1,5 @@
 # H4UI
 
-Un rice de Hyprland con onda **Frutiger Aero** (Windows 7, vidrio, verde-lima — inspirado en,
-no clon de). Pensado para instalarse de una y quedar 100% funcional, sin tener que tocar nada
-a mano después.
-
 ## Instalar
 
 ```
