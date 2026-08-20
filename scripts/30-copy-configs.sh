@@ -3,8 +3,8 @@
 # │ QUÉ ES:        la fase que de verdad instala H4UI en tu sistema:
 # │                 copia (NO symlinkea) home/ -> $HOME, usr/ -> /usr,
 # │                 system/ -> /, los temas GTK/Kvantum, y el CLI "h4ui".
-# │                 Antes de pisar cualquier archivo tuyo, lo respalda
-# │                 (scripts/lib/backup.sh) para que "h4ui reset" funcione.
+# │                 Reemplaza directamente lo que exista (SIN backups): es
+# │                 para un deploy limpio, dejar todo listo y usable al reboot.
 # │ PODÉS CAMBIAR: nada acá adentro — si querés agregar/sacar QUÉ se
 # │                 instala, la fuente de verdad es la carpeta home/, usr/,
 # │                 system/ o theme/, no este script.
@@ -16,7 +16,6 @@
 set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$SCRIPT_DIR/lib/log.sh"
-source "$SCRIPT_DIR/lib/backup.sh"
 
 : "${H4UI_REPO_ROOT:?H4UI_REPO_ROOT no está seteado — corré esto vía install.sh, no suelto.}"
 
@@ -24,7 +23,7 @@ step "Copiando configs"
 
 # copy_file <origen> <destino> <sudo:si|no> <force:si|no>
 #
-# force=si  -> siempre pisa el destino (con backup antes de pisar).
+# force=si  -> siempre pisa el destino (reemplazo directo, sin backup).
 # force=no  -> semántica "cp -n": si el destino YA existe, no lo toca
 #              (lo usamos para usr/, que trae archivos de fábrica del
 #              paquete sddm que no son nuestros — no hay que pisarlos).
@@ -35,7 +34,7 @@ copy_file() {
         if [ "$force" = "no" ]; then
             info "(dry-run) copiaría $src -> $dest (solo si NO existe ya)"
         else
-            info "(dry-run) copiaría $src -> $dest (con backup si hace falta)"
+            info "(dry-run) copiaría $src -> $dest (reemplaza si ya existe)"
         fi
         return 0
     fi
@@ -45,14 +44,12 @@ copy_file() {
         if [ "$force" = "no" ] && sudo test -e "$dest"; then
             return 0
         fi
-        backup_if_exists "$dest"
         sudo cp -f "$src" "$dest"
     else
         mkdir -p "$(dirname "$dest")"
         if [ "$force" = "no" ] && [ -e "$dest" ]; then
             return 0
         fi
-        backup_if_exists "$dest"
         cp -f "$src" "$dest"
     fi
 }
@@ -141,7 +138,6 @@ if is_dry_run; then
     info "(dry-run) copiaría scripts/h4ui -> $H4UI_BIN_DEST y anotaría de dónde clonaste el repo"
 else
     mkdir -p "$HOME/.local/bin"
-    backup_if_exists "$H4UI_BIN_DEST"
     cp -f "$H4UI_REPO_ROOT/scripts/h4ui" "$H4UI_BIN_DEST"
     chmod +x "$H4UI_BIN_DEST"
 

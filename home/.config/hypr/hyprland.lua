@@ -6,7 +6,6 @@
 -- ║  Este archivo se lee de arriba a abajo. Cada sección tiene una      ║
 -- ║  cajita que te dice QUÉ ES, QUÉ PODÉS CAMBIAR y QUÉ NO TOCAR.       ║
 -- ║  Las líneas con 👉 son las divertidas de tocar. Dale nomás.         ║
--- ║  Si algo se rompe, corré:  h4ui reset                              ║
 -- ╚══════════════════════════════════════════════════════════════════╝
 
 

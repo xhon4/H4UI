@@ -56,8 +56,8 @@ El instalador hace todo solo, en este orden:
    para eso, es normal).
 3. **Fuentes** — baja la tipografía Selawik (la que le da el look "Segoe" al rice).
 4. **Copiar configs** — copia todos los archivos de configuración a los lugares que
-   corresponden. **Antes de pisar cualquier archivo tuyo, hace una copia de seguridad**
-   (por si después querés volver atrás — ver "¿Algo salió mal?" más abajo).
+   corresponden (reemplaza directamente lo que haya, para dejar el escritorio
+   listo para usar apenas reinicies).
 5. **Temas** — chequea que el tema visual (GTK, Kvantum, la pantalla de login) haya
    quedado bien puesto.
 6. **Servicios** — activa la pantalla de login (SDDM).
@@ -103,22 +103,6 @@ o arriba a la derecha para elegir la sesión.
   (salvo que quieras usar `h4ui update` más adelante, ver abajo).
 
 ---
-
-## ¿Algo salió mal?
-
-Si tocaste algo y tu escritorio dejó de andar bien, abrí una terminal y escribí:
-
-```bash
-h4ui reset
-```
-
-Esto te devuelve **todos** los archivos que H4UI pisó, tal como estaban ANTES de
-instalar (la copia de seguridad del Paso 3 del instalador). Si solo querés revertir
-una parte puntual, por ejemplo lo de Hyprland:
-
-```bash
-h4ui reset hypr
-```
 
 ## Otros comandos útiles
 

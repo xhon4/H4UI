@@ -19,6 +19,13 @@
 > - **§3 estructura — `system/`** — se sumó un tercer árbol espejo, `system/`, que mapea a
 >   `/` (para lo poco que va en `/etc`, ej. `system/etc/sddm.conf.d/10-h4ui-theme.conf`).
 >   Mismo criterio que `usr/`: `install.sh` lo copia con sudo. No estaba en el plan original.
+> - **§0.3 / §7 `h4ui reset` — ELIMINADO (2026-08-20)** — la red de contención por backups
+>   se sacó a propósito: el instalador ahora **reemplaza directo** (deploy limpio, listo para
+>   usar al reboot). Ya no se hacen backups, no existe `h4ui reset` ni `scripts/lib/backup.sh`;
+>   el CLI `h4ui` quedó con `update`, `cheatsheet` y `help`. Las menciones sueltas de `reset`
+>   más abajo (§0.3, §3, §5, §7, §8) son historia del plan, superadas por esta nota.
+> - **§1 / §2 prompt de terminal** — el plan usa Starship (§2 descartó p10k a propósito). Ver
+>   más abajo si esa decisión cambia.
 
 Ricing **Frutiger Aero** (inspirado en Windows 7, **no clon**) para deployar en la PC de un
 principiante total de Linux. El rice cumple doble función: **verse increíble** y **enseñar a usar
