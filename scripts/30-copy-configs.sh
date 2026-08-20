@@ -171,4 +171,28 @@ else
     info "Agregado ~/.local/bin al PATH en $ZSHRC"
 fi
 
+# ── zsh como shell por defecto ────────────────────────────────────────────
+# 👉 Sin esto, aunque copiemos el .zshrc y Starship, al loguearte caés en
+# bash y no ves NADA del prompt Frutiger Aero (ni fastfetch, ni los alias).
+# chsh cambia tu shell de login a zsh (con sudo, así no vuelve a pedir
+# contraseña). Se aplica en el próximo login/reboot, no en la sesión actual.
+step "Poniendo zsh como shell por defecto"
+ZSH_BIN="$(command -v zsh || true)"
+if [ -z "$ZSH_BIN" ]; then
+    warn "No encontré zsh; no cambio el shell (¿se instaló el paquete?)."
+else
+    current_shell="$(getent passwd "$USER" | awk -F: '{print $7}')"
+    if [ "$current_shell" = "$ZSH_BIN" ]; then
+        info "Tu shell de login ya es zsh, no toco nada."
+    elif is_dry_run; then
+        info "(dry-run) sudo chsh -s $ZSH_BIN $USER"
+    else
+        if sudo chsh -s "$ZSH_BIN" "$USER"; then
+            info "Shell de login cambiado a zsh (se aplica en tu próximo login)."
+        else
+            warn "No pude cambiar el shell. Hacelo a mano:  chsh -s $ZSH_BIN"
+        fi
+    fi
+fi
+
 info "Copia de configs: listo."
